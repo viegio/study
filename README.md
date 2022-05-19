@@ -1,0 +1,2 @@
+# estudo
+exercícios da faculdade
