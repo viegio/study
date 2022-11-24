@@ -3,48 +3,48 @@ package controller;
 public class List {
 	private Node head; // cabeca cabeca
 
-	public void addIncio(String nome) { //adicionar novo nó no início da lista
+	public void addIncio(String nome, int ano) { //adicionar novo nÃ³ no inÃ­cio da lista
 		//LL empty
 		if (this.head == null) {
-			this.head = new Node(nome);
+			this.head = new Node(nome, ano);
 		}
 		// LL not empty
 		else {
-			Node newNode = new Node(nome);
+			Node newNode = new Node(nome, ano);
 			newNode.setNext(this.head);
 			this.head = newNode;
 		}
 	}
 
-	public void addMeio(String nome, int posicao) {
+	public void addMeio(String nome, int ano, int posicao) {
 		Node antes = head;
 				
 		if (head == null) {
-			this.head = new Node(nome);
+			this.head = new Node(nome, ano);
 		}
 		else {
 			for (int i = 0; i < (posicao - 2); i++) {
 				antes = antes.getNext();
 			}
 			Node depois = antes.getNext();
-			Node newNode = new Node(nome);
+			Node newNode = new Node(nome, ano);
 			newNode.setNext(depois);
 			antes.setNext(newNode);
 		}
 	}
 
-	public void addFim(String nome) {
+	public void addFim(String nome, int ano) {
 		Node last = head;
 		
 		if (head == null) {
-			this.head = new Node(nome);
+			this.head = new Node(nome, ano);
 		}
 		else {
 			while (last.getNext() != null) {
 				last = last.getNext();
 				System.out.println("not null");
 			}
-			last.setNext(new Node(nome));;
+			last.setNext(new Node(nome, ano));;
 		}
 	}
 
@@ -57,7 +57,7 @@ public class List {
 		else {
 			System.out.println("Lista de livros:\n");
 			while (mostrar != null) {
-				System.out.println("- " + mostrar.getNome());
+				System.out.println("- " + mostrar.getNome() +" \tAno: " + mostrar.getAno());
 				mostrar = mostrar.getNext();
 			}
 			System.out.println();
@@ -65,6 +65,36 @@ public class List {
 	}
 	
 	public void OrdenarLista() {
+		Node temp = head;
+		int c = 0;
 		
+		if (temp == null || temp.getNext() == null) {
+			return;
+		}
+		
+		while (temp != null) {
+			temp = temp.getNext();
+			c++;
+		}
+		
+		for (int i = 0; i < c; i++) {
+			for (int j = i+1; j <= c; j++) {
+				Node prev = head;
+				Node prox = head.getNext();
+				
+				if (prox.getAno() < prev.getAno()) {
+					int ano = prev.getAno();
+					String nome = prev.getNome();
+					
+					prev.setAno(prox.getAno());
+					prev.setNome(prox.getNome());
+					
+					prox.setAno(ano);
+					prox.setNome(nome);
+				}
+				prev = prox;
+				prox = prox.getNext();
+			}
+		}
 	}
 }
