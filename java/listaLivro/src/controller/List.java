@@ -96,4 +96,35 @@ public class List {
 			}
 		}
 	}
+	
+	public void buscarPorAno(int ano) {
+		Node temp = head;
+		int index =0;
+		
+		while (temp.getAno() != ano) {
+			temp = temp.getNext();
+			index++;
+			if (temp == null) {
+				System.out.println("Não encontrado");
+				return;
+			}
+		}
+		System.out.println("Livro encontrado na " + (index+1) +"ª posição: " + temp.getNome() + ", " + temp.getAno());
+	}
+	
+	public void buscarPorNome(String nome) {
+		Node temp = head;
+		int index=0;
+		
+		while (!temp.getNome().contains(nome)) {
+			temp = temp.getNext();
+			index++;
+			
+			if (temp == null) {
+				System.out.println("Não encontrado");
+				return;
+			}
+		}
+		System.out.println("Livro encontrado na " + (index+1) +"ª posição: " + temp.getNome() + ", " + temp.getAno());
+	}
 }
