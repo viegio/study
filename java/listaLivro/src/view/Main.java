@@ -24,7 +24,9 @@ public class Main {
 );
 		while (opc != 9) {
 			opc = Integer.parseInt(JOptionPane.showInputDialog("MENU\n1 - Inserir livro no começo\n2 - Inserir livro no fim\n3 - "
-					+ "Inserir livro na posição escolhida\n4 - Mostrar lista\n5 - Ordenar lista\n9 - Sair\nInsira o comando desejado:"));
+					+ "Inserir livro na posição escolhida\n4 - Mostrar lista\n"
+					+ "5 - Ordenar lista\n6 - Buscar livro por ano"
+					+ "\n7 - Buscar livro por nome\n9 - Sair\nInsira o comando desejado:"));
 			
 			switch (opc) {
 				case 1: nome = JOptionPane.showInputDialog("Insira o nome do livro:");
@@ -47,6 +49,14 @@ public class Main {
 					break;
 					
 				case 5: livro.OrdenarLista();;
+					break;
+					
+				case 6: ano = Integer.parseInt(JOptionPane.showInputDialog("Informe o ano do livro que deseja buscar:"));
+						livro.buscarPorAno(ano);
+					break;
+				
+				case 7: nome = JOptionPane.showInputDialog("Informe o nome do livro que deseja buscar:");
+						livro.buscarPorNome(nome);
 					break;
 					
 				case 9: JOptionPane.showMessageDialog(null, "Programa finalizado com sucesso :)");
