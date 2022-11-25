@@ -42,7 +42,6 @@ public class List {
 		else {
 			while (last.getNext() != null) {
 				last = last.getNext();
-				System.out.println("not null");
 			}
 			last.setNext(new Node(nome, ano));;
 		}
@@ -57,7 +56,7 @@ public class List {
 		else {
 			System.out.println("Lista de livros:\n");
 			while (mostrar != null) {
-				System.out.println("- " + mostrar.getNome() +" \tAno: " + mostrar.getAno());
+				System.out.println("- " + mostrar.getNome() +", " + mostrar.getAno());
 				mostrar = mostrar.getNext();
 			}
 			System.out.println();
@@ -78,10 +77,10 @@ public class List {
 		}
 		
 		for (int i = 0; i < c; i++) {
-			for (int j = i+1; j <= c; j++) {
-				Node prev = head;
-				Node prox = head.getNext();
-				
+			Node prev = head;
+			Node prox = prev.getNext();
+			
+			for (int j = i+1; j < c; j++) {
 				if (prox.getAno() < prev.getAno()) {
 					int ano = prev.getAno();
 					String nome = prev.getNome();
